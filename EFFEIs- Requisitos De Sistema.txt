@@ -5,7 +5,7 @@ Cliente: Medclini Saúde
 C008 - ASCLÉPIO 
 DOCUMENTO DE REQUISITOS
 	Kevin Vieira Pereira/ Gerente de Projetos/ 2016015385
-Lucas Lamounier Gonçalves Duarte/ ... / 2016012688
+Lucas Lamounier Gonçalves Duarte/ Analista de Requisitos / 2016012688
 Maycon Pereira Goulart/ Gerente de Produtos / 2016017862
 Breno de Oliveira Reno/ Gerente Financeiro/ 2016015886
 Rodrigo Aparecido Silva Maia/ Gerente de Vendas/ 2016013085
