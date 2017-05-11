@@ -1,0 +1,371 @@
+﻿Sistema de Gestão de Clínicas Médicas 
+Cliente: Medclini Saúde
+
+
+C008 - ASCLÉPIO 
+DOCUMENTO DE REQUISITOS
+	Kevin Vieira Pereira/ Gerente de Projetos/ 2016015385
+Lucas.../...
+Maycon Pereira Goulart/ Gerente de Produtos / 2016017862
+Breno de Oliveira Reno/ Gerente Financeiro/ 2016015886
+Rodrigo Aparecido Silva Maia/ Gerente de Vendas/ 2016013085
+
+Versão 1.0
+
+
+
+
+
+
+
+
+
+EFFEI’s Softwares
+Rua Ferrari, 458.
+CEP: 37660-000 Paraisópolis – MG
+(35) 3656-1247
+http://www.effeisoftwares.com.br
+Revisões do Documento
+Revisões são melhoramentos na estrutura do documento e também no seu conteúdo. O objetivo primário desta tabela é a fácil identificação da versão do documento. Toda modificação no documento deve constar nesta tabela.
+Data
+Versão
+Descrição
+Autor
+dd/mm/aaaa
+x.x
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Auditorias do Documento
+Auditorias são inspeções conduzidas pela equipe de PPQA – Product Process Quality Assurance (Garantia da qualidade do produto e processo) – do projeto, e tem por objetivo garantir uma qualidade mínima dos artefatos gerados durante o processo de desenvolvimento. Essa tabela pode ser utilizada também pelo GN – Gerente da Área de Negócio com o objetivo de documentar a viabilidade do mesmo.
+Data
+Versão
+Descrição
+Autor
+dd/mm/aaaa
+x.x
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ÍNDICE
+1.	INTRODUÇÃO	4
+1.1	Convenções, termos e abreviações	4
+1.1.1	Identificação dos Requisitos	4
+1.1.2	Prioridades dos Requisitos	4
+2.	Visão GERAL DO PRODUTO/SERVIÇO	5
+2.1	Abrangência e sistemas relacionados	5
+2.1.1	Descrição do cliente	6
+2.1.2	Descrição dos usuários	6
+2.1.3	Administrador	6
+2.1.4	Médico	6
+2.1.5	Secretária	6
+3.	Requisitos funcionais de sistema	6
+3.1	Cadastros, Alterações, Pesquisas e Remoções	6
+3.2	Relatórios	27
+4.	Requisitos não funcionais	34
+5.	RASTREABILIDADE	36
+6.	MUDANÇAS NOS REQUISITOS	36
+7.	REFERÊNCIAS	36
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1. INTRODUÇÃO
+Este documento especifica os requisitos do Sistema de Gestão de Clínica Médica, fornecendo aos desenvolvedores as informações necessárias para a execução de seu projeto e implementação, assim como para a realização dos testes e homologação.
+Esta introdução fornece as informações necessárias para fazer um bom uso deste documento, explicitando seus objetivos e as convenções que foram adotadas no texto. As demais seções apresentam a especificação do Sistema de Gestão de Clínica Médico e estão organizadas como descrito abaixo:
+Seção 2 - Descrição geral do produto/serviço: apresenta uma visão geral do produto/serviço, caracterizando qual é o seu escopo e descrevendo seus usuários.
+Seção 3 - Requisitos funcionais: lista e descreve os requisitos funcionais do produto/serviço, especificando seus objetivos, funcionalidades, atores e prioridades.
+Seção 4 - Requisitos não funcionais: especifica todos os requisitos não funcionais do produto/serviço, divididos em requisitos de usabilidade, confiabilidade, desempenho, segurança, distribuição, adequação a padrões e requisitos de hardware e software.
+Seção 5 - Rastreabilidade: apresenta os relacionamentos entre os requisitos do produto/serviço.
+Seção 6 - Referências: contém uma lista de referências para outros documentos relacionados
+1.1 Convenções, termos e abreviações
+A correta interpretação deste documento exige o conhecimento de algumas convenções e termos específicos, que são descritos a seguir.
+1.1.1 Identificação dos Requisitos
+Por convenção, a referência a requisitos é feita através do identificador do requisito, de acordo com o esquema abaixo:
+[Identificador de tipo de requisito. Identificador do requisito]
+O identificador de tipo de requisito pode ser:
+RFS – requisito funcional de sistema
+RNF – requisito não-funcional
+Identificador do requisito é um número, criado sequencialmente, que determina que aquele requisito é único para um determinado tipo de requisito.
+Ex: RFS01, RFS02, RNF001, RNF002.
+1.1.2 Prioridades dos Requisitos
+Para estabelecer a prioridade dos requisitos foram adotadas as denominações “essencial”, “importante” e “desejável”.
+Essencial é o requisito sem o qual o sistema não entra em funcionamento. Requisitos essenciais são requisitos imprescindíveis, que têm que ser implementados impreterivelmente.
+Importante é o requisito sem o qual o sistema entra em funcionamento, mas de forma não satisfatória. Requisitos importantes devem ser implementados, mas, se não forem, o sistema poderá ser implantado e usado mesmo assim.
+Desejável é o requisito que não compromete as funcionalidades básicas do sistema, isto é, o sistema pode funcionar de forma satisfatória sem ele. Requisitos desejáveis são requisitos que podem ser deixados para versões posteriores do sistema, caso não haja tempo hábil para implementá-los na versão que está sendo especificada.
+2. Visão GERAL DO PRODUTO/SERVIÇO
+Falhas humanas e perda de informações em clinicas que não usam um sistema informacional (usam prontuários e listas em papel) são comuns. A aplicação desse sistema é de suma importância para a clínica médica, onde a segurança de dados pessoais dos pacientes e as informações de sua situação física, não podem, de forma alguma, ser corrompidos ou mal organizados.  
+O sistema apresentado neste documento foi idealizado com o propósito de atender as necessidades propostas pela clínica médica “Medclini Saúde”.
+O “Sistema de Gestão de Clinicas Médicas” foi desenvolvido com o propósito de auxiliar a administração de informações presentes em prontuários, agendas médicas, banco de dados entre outros meios relevantes a uma clínica médica. Suas funcionalidades envolvem gestão de agendas médicas (horário de consultas e informações dos pacientes), organização de prontuários médicos, banco de dados de informações (remédios e doenças), além de gestão de usuários (aplicado pelo administrador do sistema).  
+O sistema será diferenciado dependendo do usuário logado, cada qual com suas particularidades e limitações. Os usuários em questão são o Administrador, Médico e Secretária.
+O sistema usará o auxílio da internet para a utilização dos bancos de dados e para auxiliar a comunicação entre Paciente – Médico/Secretaria, através de emails. 
+
+2.1 Abrangência e sistemas relacionados
+O serviço que o sistema oferecerá a clínica se caracteriza na digitalização de todas as informações que a mesma anteriormente o fazia por meio da “papelada”. Esse serviço abrange diversas áreas do ambiente médico, como:
+Agenda Médica: Agenda virtual e dinâmica, onde usuário poderá agendar consultas, Alterar consultas e Remover consultas. Possibilitando assim uma total integração entre os horários médicos, e as consultas serão acessadas instantaneamente.
+Prontuário Médico: O prontuário médico digital receberá informações sobre os pacientes, incluindo idade, situação física, histórico entre outros. O médico poderá acionar o prontuário medico instantaneamente recebendo todas as informações necessárias sem o risco de falhas humanas.
+Banco de Dados: O sistema manterá atualizado um banco de dados de remédios e doenças. O banco de dados será de fácil acesso por meio de uma pesquisa rápida permitindo ao usuário esclarecimento de dúvidas sobre esses tópicos. 
+*O sistema será conectado à internet (necessária para atualização e backup de banco de dados e para o contato via e-mail com pacientes).
+*O sistema não estará ligado à administração financeira da clínica médica e não receberá informações ou relatórios relacionados a pagamento ou recebimento de valores. O sistema usará o auxílio da internet para a utilização dos bancos de dados e para auxiliar a comunicação entre Paciente – Médico/Secretaria, através de e-mails. 
+2.1.1 Descrição do cliente
+A instituição contratante do produto ”Medclini Saúde” é uma clínica de médio porte que atua em diversas áreas da medicina.
+2.1.2 Descrição dos usuários
+Os usuários do sistema são pré-programados para acessar tarefas especificas a cada um, são eles (hierarquicamente organizados):
+Administrador.
+Médico.
+Secretaria.
+2.1.3 Administrador
+O ator “administrador” será o usuário capaz de manipular as contas de usuário que poderão utilizar das ferramentas do sistema. Esse ator poderá também acessar e alterar informações relacionadas aos funcionários da clínica que serão cadastrados no sistema.
+2.1.4 Médico
+O ator “médico” poderá acessar todas as informações relativas aos pacientes, formulários e agendas médicas completas e suas extensões. Apenas o médico poderá editar os prontuários médicos dos pacientes. 	 
+2.1.5 Secretária
+O ator “Secretária” poderá acessar determinadas informações sobre os pacientes além de poder cadastrá-los, remove-los ou alterá-lo dependendo de sua necessidade. Além das informações de prontuário ele terá total acesso às agendas dos médicos, podendo alterá-las de acordo com as necessidades de pacientes e/ou médicos.
+3. Requisitos funcionais de sistema
+Nesta seção será apresentado os requisitos funcionais de sistema que foram derivados dos requisitos de clientes. Os requisitos funcionais de sistemas que serão explicados abaixo serão os responsáveis por explicar exatamente as funcionalidades que estarão presentes no sistema.
+3.1 Cadastros, Alterações, Pesquisas e Remoções
+
+[RFS01] Inserir Funcionário 
+Ator: Administrador.
+Este requisito funcional começa quando o Usuário Ator deseja adicionar um novo funcionário no sistema. Para inserir um novo funcionário o usuário deverá inserir as informações presentes na tabela 5. 
+Tabela 5 – Cadastro de funcionário
+Atributo
+Descrição 
+*Nome
+Nome do Funcionário
+*CPF
+CPF no formato <<999.999.999-99>>, haverá validação do CPF através de um cálculo que será implementado no código
+*Número da carteira de trabalho
+Número da carteira de trabalho estará no formato<<>>
+*Cargo
+Estará limitado a:
+Secretária
+Médico
+Administrador
+Outros
+Fazendo-se necessário a especificação do cargo quando escolhido a opção “outros”. 
+% Médico – Especialidade 
+Estará limitado a: 
+Cardiologista
+Neurologista
+Urologista
+Ortopedista
+Clínico Geral
+Oftalmologista
+Pediatra
+Outros
+Fazendo-se necessário a especificação da especialidade quando escolhido “Outros”
+*Data de Nascimento
+Data de Nascimento no formato DD/MM/AAAA.
+Com a data mínima de `1900 e máxima sendo o dia atual
+*Endereço
+Endereço do paciente composto por rua, logradouro, estado, cidade, cep
+E-mail
+E-mail do paciente caso o mesmo possua 
+Telefone
+Número de telefone no formato <<(xx) xxxx-xxxx>>
+Telefone Celular
+Número de telefone no formato <<(xx) xxxxx-xxxx>>
+*Sexo
+Campo de escolha fechada:
+Masculino 
+Feminino
+*Carga Horária
+O máximo permitido será 8 horas, e o mínimo de 4 horas.
+Se o Usuário Ator adicionar um novo funcionário do tipo médico, secretaria ou administrador, automaticamente será feito o chamado para o RFS06. 
+(*) Campo que possuir tal símbolo é considerado de preenchimento obrigatório 
+(%) Campo que possuir tal símbolo é considerado de preenchimento obrigatório, caso o carga seja médico
+Prioridade: 	[X] Essencial		[ ] Importante 		[ ] Desejado
+
+[RFS02] Inserir Usuário.
+Ator: Administrador
+Este requisito funcional começa quando o Usuário Ator adicionar um novo funcionário do tipo médico, secretaria ou administrador; dessa forma RFS06 será um complemento da RFS05.
+Para inserir um novo usuário deverá inserir as informações presentes na tabela 6. 
+Tabela 6 – Inserir Usuários
+Atributo
+Descrição 
+*Nome de usuário
+Nome qualquer que o funcionário escolher, desde que já não tenha sido cadastrado
+*Senha
+Senha que será necessária para o acesso do funcionário ao sistema.
+A senha terá no mínimo 6 dígitos e no máximo 20. Sendo necessário a utilização de alguma letra em maiúsculo e pelo menos um número
+ (*)Campo que possuir tal símbolo é considerado de preenchimento obrigatório 
+Prioridade: 	[X] Essencial		[ ] Importante 		[ ] Desejado
+
+
+[RFS03] Pesquisa Funcionários 
+Ator: Secretária, Médico, Administrador
+Será possível pesquisar funcionários cadastrados no sistema, através dos seguintes filtros
+
+Tabela 7 – Pesquisa de funcionários.
+Filtros
+Descrição do Campo
+Nome 
+Nome do Usuário
+Por default vira preenchido com TODOS OS FUNCIONÁRIOS.
+CPF
+CPF do usuário
+Para todas as opções de campos listados na tabela 6 o usuário ator terá a opção procurar os funcionários por nome ou por CPF. Por padrão a opção ficará marcada como “Todos os funcionários”. 
+No caso de a pesquisa ser por nome ou CPF, será mostrado o usuário que possua tal dado, será mostrado seu tipo de acesso, e certos dados como o nome completo, carga horária, nome de usuário, data de nascimento, endereço e seu e-mail.
+No caso de não ter acontecido o preenchimento do campo de busca será listado todos funcionários do sistema, de maneira categorizada pelo cargo. Como exemplo:
+
+Funcionários: 
+	Nome: &Michel Salgado
+	Cargo: Administrador
+
+	Nome: &João Guedes
+	Cargo: Médico
+
+Nome: &Júlio Afonso
+	Cargo: Médico
+
+Demais funcionários. 
+	& Este campo será um hiperlink para a funcionalidade de visualizar funcionário no sistema
+Prioridade: 	[X] Essencial		[ ] Importante 		[ ] Desejado
+
+[RFS04] Alterar Funcionário.
+Ator: Administrador.
+Este requisito funcional começa quando o Usuário Ator deseja alterar certos dados de certo funcionário no sistema. O RFS08 será um complemento do RFS07, então quando encontrar o funcionário desejado será possível tanto a visualização de certos dados, como a alteração dos dados presentes na tabela 7. E para as alterações entrarem em vigor será necessário a confirmação do funcionário a ser alterado, através de sua senha.
+
+Tabela 8 – Alteração funcionário.
+Atributo
+Descrição 
+Endereço
+Endereço do paciente composto por rua, logradouro, estado, cidade, cep
+Telefone
+Número de telefone no formato <<(xx) xxxx-xxxx>>
+Telefone Celular
+Número de telefone no formato <<(xx) xxxxx-xxxx>>
+E-mail
+E-mail do funcionário caso o mesmo possua 
+Carga Horaria
+O máximo permitido será 8 horas, e o mínimo de 4 horas.
+Prioridade: 	[ ] Essencial		[X] Importante 		[ ] Desejado
+
+[RFS05] Alterar Usuário. 
+Ator: Administrador, Médico.
+Este requisito funcional começa quando o Usuário Ator chamar a operação alterar usuário.
+	A alteração do usuário poderá ser executada pelo próprio usuário, sendo capaz de apenas realizar alteração dos dados ao seu respeito, e pelo administrador, que poderá alterar os dados de qualquer usuário.  Os dados alteráveis são os descritos na tabela 6.
+	No caso onde a tarefa será iniciada pelo administrador a RFS09 será um complemento da RFS07, possibilitando assim a escolha do funcionário a qual o usuário está vinculado para que ocorra a alteração.	
+	Em todas as alterações será necessário a inserção da senha na confirmação da operação.
+Prioridade: 	[X] Essencial		[ ] Importante 		[ ] Desejado
+
+[RFS06] Inativar funcionários. 
+Ator: Administrador
+Este requisito funcional começa quando o Usuário Ator chamar a operação inativar funcionário do sistema. 
+Primeiramente será feito uma chamada ao RFS07, onde será pesquisado o funcionário em questão, ocorrendo a escolha do mesmo é exibida uma mensagem de confirmação, sendo necessário a inserção da senha do usuário para que procedimento de remoção ocorra.
+Durante a inativação do funcionário será chamada a RFS11 para que ocorra a inativação do usuário vinculado ao funcionário removido.
+A inativação não excluirá o funcionário do banco de dados, apenas irá efetuar a desativação do funcionário tornando-o inativo para o sistema.
+Caso o funcionário a ser excluído seja um médico, deverá antes ter suas consultas desmarcadas, e enviar uma mensagem para os pacientes que tiveram suas consultas desmarcadas.
+Prioridade: 	[ ] Essencial		[X] Importante 		[ ] Desejado
+
+[RFS07] Inativar Usuário
+Ator: Administrador
+Este requisito funcional começa quando o Usuário Ator chamar a operação inatvar usuário do sistema. 
+Para ocorrer a inativação, o RFS09 deve ter ocorrido, então automaticamente o usuário de tal funcionário será removido.
+A inativar não excluirá o usuário do banco de dados, apenas irá efetuar a desativação do usuário tornando-o inativo para o sistema.
+Prioridade: 	[ ] Essencial		[ ] Importante 		[X] Desejado
+4. Requisitos não funcionais 
+
+[RNF01] Criptografar as informações do cliente
+Ator: Sistema
+Criptografar dados dos clientes juntamente com os seus prontuários de forma que mantenha a integralidade dos mesmos. Ideal utilizar um protocolo de criptografia assimétrica, afinal os dados a serem criptografados serão em algum momento consultados pelo médico.
+Prioridade:	    [X] Essencial	[ ] Importante		[ ] Desejável
+
+[RNF02] Criptografar a senha dos usuários
+Ator: Sistema
+Criptografar a senha dos usuários de forma que mantenha a integralidade dos mesmos. Ideal utilizar um protocolo de criptografia hash como SHA-256 ou MD5, afinal a senha apenas será utilizada para operações de comparação.
+Prioridade:	    [X] Essencial	[ ] Importante		[ ] Desejável
+
+[RNF03] Manter operações realizadas pelo usuário
+	Ator: Sistema
+Sempre que qualquer usuário fazer alguma operação no sistema o mesmo registrará a operação efetuada. O registro das operações conterá o nome de usuário, a operação realizada, data e hora e código de identificação.
+Prioridade:	    [X] Essencial	[ ] Importante		[ ] Desejável
+
+[RNF04] Expirar sessão de usuário
+Ator: Sistema
+Se o usuário passar um período de tempo sem efetuar nenhuma operação no sistema, a sessão atual de operação expirará e será necessário iniciar sessão no sistema novamente. Cada perfil de usuário terá um período exato de validade em sua sessão. Segue os perfis e seus períodos:
+Médico: 50 minutos.
+Administrador: 50 minutos.
+Secretaria: 30 minutos.
+Prioridade:	    [X] Essencial	[ ] Importante		[ ] Desejável
+
+[RNF05] Realizar Backup Semanal
+Ator: Sistema
+O sistema realizará um Backup dos prontuários dos pacientes em um servidor em nuvem o qual será especificado pela clínica médica. Será realizado o Backup no começo da semana, mas também haverá a opção de alteração deste período pela clínica.
+Prioridade:	    [X] Essencial	[ ] Importante		[ ] Desejável
+
+[RNF06] Emitir Relatórios Rapidamente
+Ator: Sistema
+A emissão dos relatórios não deve exceder 10 segundos do momento em que o usuário clicar em pesquisar até o momento em que a disponibilização para o usuário é 100% concluída. Esta função se faz necessária para não fazer o administrador ou secretária perderem seus tempos tendo que esperar a emissão de relatórios sem saber o tempo necessário até os mesmos estejam pronto.
+Prioridade:	    [ ] Essencial	[X] Importante		[ ] Desejável
+5. Condições de Pagamento
+Esta subseção descreve os custos e valores do serviço prestado.
+5.1 Sobre o número de horas e valor
+O total de horas requeridas para o desenvolvimento dos requisitos solicitados através do “Documento de Requisitos Sistema de Gestão para Clínicas Médicas – EFFEI’s Software” é de 350 (trezentos e ciquenta) horas.
+O valor cobrado pela contratada será de R$ 150,00 (um cento e cinquenta reais) por hora.
+Portanto o valor total desta Proposta Comercial é de R$ 52.500,00 (cinquenta e dois mil e quinhentos) reais.
+5.2 Forma de pagamento
+O pagamento desta proposta será realizado em 3 (três parcelas), de valor R$ 17.500,00 (dezessete mil e quinhentos) reais.
+O pagamento será feito da seguinte forma:
+1ª. Parcela: 5 dias após a assinatura desta proposta por parte da Contratante;
+2ª. Parcela: 5 dias após a homologação da Primeira Iteração do sistema (aceite pela Montreal, dos requisitos descritos no documento de requisitos RA 13);
+3ª. Parcela: 5 dias após a homologação da Terceira Iteração do sistema (aceite pela Montreal, dos requisitos descritos no documento de requisitos RA 13).
+
+6. RASTREABILIDADE
+A matriz de rastreabilidade bidirecional será entregue, após a aprovação deste documento.
+7. MUDANÇAS NOS REQUISITOS
+Sempre que seja necessária a introdução de alterações em relação aos requisitos descritos neste documento ou a inclusão de novos requisitos, os seguintes itens devem ser seguidos. 
+Toda solicitação de mudança proveniente do Contratante deverá ser documentada por este e enviada ao gerente de projetos Kevin Pereira.
+Um documento contendo a descrição da solicitação de mudança deve ser assinado pelos responsáveis da clínica Medclini Saúde e pela empresa EFFEI’S Software, formalizando assim a solicitação.
+O tempo necessário para avaliar a viabilidade técnica de uma alteração no escopo delineado nesta proposta será cobrado ao Contratante.
+A empresa fornecedora avaliará o impacto da mudança no cronograma e no custo do serviço e submeterá ao Contratante para aprovação.
+A empresa fornecedora iniciará a execução da mudança no caso de não haver impacto associado à mesma
+A empresa contratante poderá realizar consulta a respeito de mudanças em ferramentas do sistema que são fundamentais, como resultado da consulta a empresa fornecedora informará se tais ferramentas podem ser alteradas ou não.
+8. REFERÊNCIAS
+Este documento originou-se da proposta técnica, e será fundamental para o documento de estimativa de tempo, e custo finais; além de ser necessário para a realização da matriz de rastreabilidade.
+
+
+												
+Representante do contratando		       Representante da contratante
+              		                           
+
+
+		Testemunha 1				Testemunha 2	
+
+
